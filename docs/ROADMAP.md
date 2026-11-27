@@ -12,7 +12,8 @@ Dates are the plan's targets from 1 December 2026.
 | Event tracking for every agent step (`agent_event` table, `trackAgentStep`, `withAgentStep`) | In review (this PR) |
 | CI: lint, typecheck, tests, migration drift check, build | In review (this PR) |
 | Fix the 5 site claims (rating and user count, calls and Aircall, "2 months free", WhatsApp approvals, Inbound Labs wording) | Blocked: website code isn't in this repo |
-| Pricing decision (contact data, Flex) | Waiting on Om |
+| Pricing: contact data included up to a cap (D6). Set the cap from provider cost per verified contact | Waiting on cost figures |
+| Pricing: Flex pay as you go | Waiting on Om |
 | Worker host for the queue, Sender tick, inbox sync | Waiting on Om |
 | Deploy: Netlify site, Supabase project, environment variables | Next |
 
@@ -28,7 +29,7 @@ Suggested build order, each its own PR:
 2. **Background worker.** Job queue (pg-boss on the same Postgres) and the worker process on the chosen host.
 3. **P1 one-field start.** Researcher reads a URL (or a 3-question form) and builds a business profile in under 2 minutes.
 4. **P2 free lead preview.** Segments with fit scores and 10 sample decision makers, before signup and with no card.
-5. **P3 contact data.** Provider integration with per-contact metering. Billing follows the pricing decision.
+5. **P3 contact data.** Provider integration with per-contact metering against each plan's included count (D6).
 6. **P9 CSV import.** Up to 30,000 rows with per-row outcomes.
 7. **P6 languages.** Language chosen per segment; Writer writes in it.
 8. **U3 spend caps.** Hard monthly cap, charge preview, running total, one-click cancel.
