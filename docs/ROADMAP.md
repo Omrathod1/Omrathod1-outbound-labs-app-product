@@ -25,7 +25,7 @@ Exit test: a new user goes from URL to approved first campaign in under 15 minut
 
 Suggested build order, each its own PR:
 
-1. **Approval ledger and U1.** Campaign, email and approval tables. The Sender refuses any email without an approval record, enforced in the database, not only in code. Nothing sends on a timer. This comes first because every later feature writes into it.
+1. **Approval ledger and U1.** Done, in review. Campaign, lead, email and approval tables. The database refuses to queue or send an email without an approval from the same campaign, freezes approved text, and keeps approvals append-only. Approve, remove lead or email, pause and resume in the app. Approval by email and Slack come with those integrations.
 2. **Background worker.** Job queue (pg-boss on the same Postgres) and the worker process on the chosen host.
 3. **P1 one-field start.** Researcher reads a URL (or a 3-question form) and builds a business profile in under 2 minutes.
 4. **P2 free lead preview.** Segments with fit scores and 10 sample decision makers, before signup and with no card.

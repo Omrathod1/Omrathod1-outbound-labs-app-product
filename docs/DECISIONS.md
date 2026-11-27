@@ -10,6 +10,7 @@ Product and engineering decisions, newest last. Add a row when Om decides someth
 | D4 | 2026-11-27 | Workspaces are Better Auth organizations; one login can belong to many | Leaves room for agency workspaces (U11) without a migration |
 | D5 | 2026-11-27 | Every agent step writes one `agent_event` row | Phase 0 event tracking; feeds activation, cost per meeting and the "no send without approval" check |
 | D6 | 2026-11-27 | Contact data is included in plans, up to a capped number of verified contacts | Cap set from real provider cost so data stays under about 30% of plan revenue. The brand voice rule "never say lead data is included" and the approved claims list must change before the site does |
+| D7 | 2026-11-28 | The "no send without approval" rule is enforced in Postgres (check constraint, same-campaign foreign key, triggers), not only in app code | `src/db/schema/campaigns.ts`, `drizzle/0002_approved_email_is_frozen.sql` |
 
 ## Open
 

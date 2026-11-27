@@ -42,7 +42,8 @@ Open http://localhost:3000. Signed-out visitors go to `/sign-in`; after sign-up 
 src/app/(auth)      sign-in and sign-up
 src/app/app         the signed-in app
 src/app/api         Better Auth handler, health check
-src/db/schema       Drizzle tables (auth, workspaces, agent events)
+src/db/schema       Drizzle tables (auth, workspaces, agent events, campaigns, approvals)
+src/lib/campaigns   approval ledger: approve, remove, pause, queue for the Sender
 src/lib/events      agent step tracking
 drizzle/            generated SQL migrations, committed
 test/               test helpers
