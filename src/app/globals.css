@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+/* Brand tokens from docs/brand/brand-guide.md, section 4. Most of every
+   surface is black; orange and blue appear only where light would. Mint is
+   for product success states only. */
+@theme {
+  --color-black: #000000;
+  --color-ink: #f5f5f7;
+  --color-soft: #a3a3ad;
+  --color-dim: #8b8b96;
+  --color-orange: #ff7a1a;
+  --color-amber: #ff9a3c;
+  --color-blue: #3d8bff;
+  --color-sky: #8cc2ff;
+  --color-mint: #57e6a8;
+  --color-hairline: rgb(255 255 255 / 0.1);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  --radius-button: 10px;
+  --radius-card: 18px;
+
+  --ease-brand: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  color-scheme: dark;
+  --edge-gradient: linear-gradient(90deg, #ff7a1a 0%, #ffcf9a 46%, #bfe0ff 54%, #3d8bff 100%);
+}
+
+body {
+  background: var(--color-black);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+/* Primary button: edge gradient as a 1.5px border, orange glow left, blue
+   right. One per view; everything else is a ghost button. */
+.btn-primary {
+  position: relative;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-button);
+  background:
+    linear-gradient(var(--color-black), var(--color-black)) padding-box,
+    var(--edge-gradient) border-box;
+  box-shadow:
+    -8px 0 24px -12px rgb(255 122 26 / 0.6),
+    8px 0 24px -12px rgb(61 139 255 / 0.6);
+}
+
+.label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-dim);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise-in {
+    animation: rise-in 300ms var(--ease-brand) both;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
