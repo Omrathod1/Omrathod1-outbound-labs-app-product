@@ -239,7 +239,7 @@ own, but missing any of them loses the comparison.
 |-----|-----------------------------------------|-------------------------|-------------------------------------------------------------------------------------------------|------|
 | P1  | One-field start, plus a no-website path | Researcher              | URL or a 3-question form gives a business profile in under 2 minutes                            | S    |
 | P2  | Free lead preview before signup         | Strategist + Prospector | Show segments, fit scores and 10 sample decision makers with no card                            | M    |
-| P3  | Contact data included in plans          | Prospector              | Verified contacts counted in the plan; no separate provider bill for the customer (see pricing) | M    |
+| P3  | Contact data included in plans          | Prospector              | Verified contacts from the Inbound Labs API counted in the plan; no separate provider bill for the customer (see pricing and the addendum below) | M    |
 | P4  | Local-business data source              | Prospector              | A licensed places dataset (for example via a maps data provider) for SMB segments               | M    |
 | P5  | Market explorer                         | Strategist              | Free public tool: type a niche, see neighbouring niches and company counts by country           | M    |
 | P6  | 30+ languages                           | Writer                  | Write in the lead's language; language picked per segment                                       | S    |
@@ -430,6 +430,19 @@ rate.
     default?
 
 5.  Agencies as the first paid segment, or founders?
+
+## Addendum: prospect data from the Inbound Labs API
+
+Added 28 November 2026 at Om's request. Not in the original .docx.
+
+The Prospector gets prospect data (companies, decision makers, verified emails) from the Inbound Labs API. This is the source for P2 (free lead preview), P3 (contact data included in plans) and the Prospector's searches in every campaign.
+
+- **Build it behind a provider interface.** The Prospector calls one internal interface; Inbound Labs is the first provider behind it. Other providers, such as a local-business dataset for P4, can be added later without changing the agents.
+- **Meter every call.** Each search and each verified contact records an agent event with its cost, so the included contact count per plan (decision D6) is set from real cost per verified contact.
+- **Only verified addresses are emailed.** Contacts the API can't verify are dropped before the Writer sees them, and the approval screen shows how many were dropped.
+- **Keep the brands separate in copy.** Outbound Labs can name Inbound Labs as its data provider, but the two stay clearly separate brands (see the site claims above).
+- **Secrets stay out of the repo.** The API key lives only in the app's and worker's environment variables.
+- **Brand voice.** The approved claim "contact data comes from B2B data provider APIs, billed by the provider" changes once D6 ships, to say contact data is included up to the plan's limit.
 
 ## Sources
 

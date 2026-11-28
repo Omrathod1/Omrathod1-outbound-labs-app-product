@@ -28,8 +28,8 @@ Suggested build order, each its own PR:
 1. **Approval ledger and U1.** Done, in review. Campaign, lead, email and approval tables. The database refuses to queue or send an email without an approval from the same campaign, freezes approved text, and keeps approvals append-only. Approve, remove lead or email, pause and resume in the app. Approval by email and Slack come with those integrations.
 2. **Background worker.** Job queue (pg-boss on the same Postgres) and the worker process on the chosen host.
 3. **P1 one-field start.** Researcher reads a URL (or a 3-question form) and builds a business profile in under 2 minutes.
-4. **P2 free lead preview.** Segments with fit scores and 10 sample decision makers, before signup and with no card.
-5. **P3 contact data.** Provider integration with per-contact metering against each plan's included count (D6).
+4. **P2 free lead preview.** Segments with fit scores and 10 sample decision makers from the Inbound Labs API, before signup and with no card.
+5. **P3 contact data from the Inbound Labs API (D8).** A provider interface with Inbound Labs as the first provider: company and people search, email verification, per-contact metering against each plan's included count (D6). Needs the API docs and a key.
 6. **P9 CSV import.** Up to 30,000 rows with per-row outcomes.
 7. **P6 languages.** Language chosen per segment; Writer writes in it.
 8. **U3 spend caps.** Hard monthly cap, charge preview, running total, one-click cancel.

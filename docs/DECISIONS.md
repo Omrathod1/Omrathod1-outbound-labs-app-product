@@ -11,6 +11,7 @@ Product and engineering decisions, newest last. Add a row when Om decides someth
 | D5 | 2026-11-27 | Every agent step writes one `agent_event` row | Phase 0 event tracking; feeds activation, cost per meeting and the "no send without approval" check |
 | D6 | 2026-11-27 | Contact data is included in plans, up to a capped number of verified contacts | Cap set from real provider cost so data stays under about 30% of plan revenue. The brand voice rule "never say lead data is included" and the approved claims list must change before the site does |
 | D7 | 2026-11-28 | The "no send without approval" rule is enforced in Postgres (check constraint, same-campaign foreign key, triggers), not only in app code | `src/db/schema/campaigns.ts`, `drizzle/0002_approved_email_is_frozen.sql` |
+| D8 | 2026-11-28 | Prospect data comes from the Inbound Labs API, behind a provider interface so other sources can be added | Feeds P2 lead preview, P3 included contacts and every Prospector search. Its cost per verified contact sets the D6 cap |
 
 ## Open
 
